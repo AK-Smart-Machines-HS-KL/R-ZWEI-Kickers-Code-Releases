@@ -50,3 +50,17 @@ The existing communication modules were updated to account for the message restr
 
 ***Important Note**: Unfortunately the communication overhaul breaks working with the simulator at the time of this release since it makes all the robots huddle into one spot. However, when deploying on the robots in a real life field, this issue does not occur.
 The issue stems from the fact, that the simulator saves space by using only one instance of shared information amongst robots while in real life each robot of course has their own instance/copy of that. We're currently investigating and fixing the issue.*
+
+### Shared
+
+We've added a module for shared information that provides the team with strategically relevant information.
+
+## Adjustments
+
+Of course we also had to adjust a lot of stuff for our purposes, e.g.
+- we had to add configurations for each of out bots
+- we had to configure different field sizes to deploy in
+- we have made adjustments to most modules in order to make them work with our strategic implementations and added features, prominently but not exclusively in:
+    - different locators and WhistleDetection
+    - Perception (e.g. Jersey Detection)
+    - Communication
