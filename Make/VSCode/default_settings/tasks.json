@@ -1,0 +1,174 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+
+        {
+            "label": "generate ninja project",
+            "type": "shell",
+            "command": "NO_CLION=true ${workspaceFolder}/Make/Linux/generate",
+        },
+
+        {
+            "label": "build sim debug",
+            "type": "shell",
+            "command": "${workspaceFolder}/Make/Linux/compile SimRobot Debug",
+            "dependsOn": "generate ninja project",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build"
+            }
+        },
+
+        {
+            "label": "build sim dev",
+            "type": "shell",
+            "command": "${workspaceFolder}/Make/Linux/compile SimRobot Develop",
+            "dependsOn": "generate ninja project",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build"
+            }
+        },
+
+        {
+            "label": "build sim release",
+            "type": "shell",
+            "command": "${workspaceFolder}/Make/Linux/compile SimRobot Release",
+            "dependsOn": "generate ninja project",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+
+        {
+            "label": "build bush",
+            "type": "shell",
+            "command": "${workspaceFolder}/Make/Linux/compile bush Release",
+            "dependsOn": "generate ninja project",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build"
+            }
+        },
+
+        {
+            "label": "bush",
+            "type": "shell",
+            "command": "${workspaceFolder}/Build/Linux/bush/Release/bush",
+            "dependsOn": "build bush",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "options": {
+                "statusbar": {
+                    "hide" : false,
+                    "color": "#000000",
+                    "label": "bush"
+                }
+            }
+        },
+
+        {
+            "label": "Sim",
+            "type": "shell",
+            "command": "${workspaceFolder}/Build/Linux/SimRobot/Release/SimRobot",
+            "dependsOn": "build sim release",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "options": {
+                "statusbar": {
+                    "hide" : false,
+                    "color": "#fbff00",
+                    "label": "Sim"
+                }
+            }
+        },
+
+        {
+            "label": "Sim Develop",
+            "type": "shell",
+            "command": "${workspaceFolder}/Build/Linux/SimRobot/Develop/SimRobot",
+            "dependsOn": "build sim dev",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "options": {
+                "statusbar": {
+                    "hide" : false,
+                    "color": "#fbff00",
+                    "label": "Sim Dev"
+                }
+            }
+        },
+
+        {
+            "label": "build_image",
+            "type": "shell",
+            "command": "${workspaceFolder}/Make/Linux/deploy -i -w zwoogle4 -p 1 -v 50",
+            "dependsOn": "generate ninja project",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build"
+            }
+        },
+
+        {
+            "label": "build nao develop",
+            "type": "shell",
+            "command": "${workspaceFolder}/Make/Linux/compile Nao Develop",
+            "dependsOn": "generate ninja project",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build"
+            }, 
+
+            "options": {
+                "statusbar": {
+                    "hide" : false,
+                    "color": "#0ad41b",
+                    "label": "Build Nao Dev"
+                }
+            }
+        },
+
+        {
+            "label": "build nao release",
+            "type": "shell",
+            "command": "${workspaceFolder}/Make/Linux/compile Nao Release",
+            "dependsOn": "generate ninja project",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build"
+            }, 
+
+            "options": {
+                "statusbar": {
+                    "hide" : false,
+                    "color": "#0ad41b",
+                    "label": "Build Nao"
+                }
+            }
+        },
+
+    ],
+    "statusbar.default.hide": true
+}

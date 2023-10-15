@@ -1,0 +1,16 @@
+{
+    "recommendations": [
+        "hars.cppsnippets",
+        "eamodio.gitlens",
+        "grapecity.gc-excelviewer",
+        "cschlosser.doxdocgen",
+        "jeff-hykin.better-cpp-syntax",
+        "mhutchie.git-graph",
+        "donjayamanne.git-extension-pack",
+        "codezombiech.gitignore",
+        "spmeesseman.vscode-taskexplorer",
+        "actboy168.tasks",
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack"
+    ]
+}
